@@ -1,0 +1,33 @@
+#Nav-Bar {
+    width: 100%;
+    display: grid;
+    justify-content: space-between;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    padding: 10px;
+    gap: 10px;
+    box-sizing: border-box;
+}
+
+#Nav-Bar img{
+    width: 100%;
+    max-width: 100px;
+}
+
+#Nav-Bar nav {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(10px, 0.2fr));
+    justify-content: right;
+    gap: 10px;
+}
+
+#Nav-Bar a{
+    text-align: right;
+    text-decoration: none;
+    color: red;
+    font-size: 1.50rem;
+}
+
+hr{
+    margin-top: 1%;
+}
