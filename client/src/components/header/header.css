@@ -1,4 +1,4 @@
-#Nav-Bar {
+.Nav-Bar {
     width: 100%;
     display: grid;
     justify-content: space-between;
@@ -9,25 +9,25 @@
     box-sizing: border-box;
 }
 
-#Nav-Bar img{
-    width: 100%;
+.logo{
+    width: 50%;
     max-width: 100px;
 }
 
-#Nav-Bar nav {
+.navigation {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(10px, 0.2fr));
     justify-content: right;
     gap: 10px;
 }
 
-#Nav-Bar a{
+.elements{
     text-align: right;
     text-decoration: none;
     color: red;
     font-size: 1.50rem;
 }
 
-hr{
-    margin-top: 1%;
+.separator{
+    margin-bottom: 2%;
 }

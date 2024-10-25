@@ -1,20 +1,15 @@
-body{
-    font-family: 'Poppins', sans-serif;
-    font-size: 16px;
-}
-
-#contacto{
+.contacto{
     display: flex;
     align-items: center;
 }
 
-#contacto h1{
+.titulo {
     color: red;
     font-size: 2.8125rem;
     align-items: start;
 }
 
-#form-container{
+.form-container{
     display: flex;
     justify-content: center;
     padding: 20px;
@@ -23,7 +18,7 @@ body{
     gap: 25%;
 }
 
-#form{
+.form{
     display: flex;
     flex-direction: column;
     gap: 15px;
@@ -31,24 +26,24 @@ body{
     max-width: 300px;
 }
 
-#form-group{
+.form-group{
     display: flex;
     flex-direction: column;
 }
 
-#form-group label{
+.form-group label{
     margin-bottom: 5px;
 }
 
-#form-group input,
-#form-group textarea{
+.form-group input,
+.mensaje{
     padding: 10px;
     font-size: 1rem;
     border: 1px solid black;
     border-radius: 5px;
 }
 
-#form-group textarea{
+.mensaje{
     resize: vertical;
 }
 
@@ -72,7 +67,7 @@ button:hover{
     align-items: center;
 }
 
-.imagen-container img{
+.imgContacto{
     width: 100%;
     max-width: 500px;
     border-radius: 10px;

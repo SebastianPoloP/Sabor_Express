@@ -1,15 +1,11 @@
-body{
-    font-family: 'Poppins', sans-serif;
-    font-size: 16px;
-}
-
-#productos{
+.productos{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     padding: 20px;
     gap: 50px;
 }
+
 .producto {
     display: flex;
     flex-direction: column;
@@ -23,15 +19,18 @@ body{
     padding: 10px;
     transition: transform 0.3s, box-shadow 0.3s;
 }
+
 .producto:hover {
     transform: translateY(-5px);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
+
 .producto img {
     width: 100%;
     height: auto;
     border-bottom: 2px solid #eee;
 }
+
 .producto h2 {
     margin: 10px 0 0;
     font-size: 1.1em;
@@ -42,6 +41,6 @@ h1{
     text-align: center;
 }
 
-#producto-escogido{
+.producto-escogido{
     margin-bottom: 40%;
 }
