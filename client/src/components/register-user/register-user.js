@@ -1,5 +1,5 @@
 // Importaciones necesarias
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { NavBar } from '../header/header';
 import { Footer } from '../footer/footer';
 import './register-user.css'
@@ -25,7 +25,7 @@ export function FormularioRegistro() {
   async function EnviarCambios(event){
     event.preventDefault();
     try {
-      const response = await fetch('http://localhost:3000/user/create-user',{
+      const response = await fetch('http://localhost:3030/user/create-user',{
         method: 'POST',
         headers:{
           'Content-Type': 'application/json',
@@ -37,7 +37,7 @@ export function FormularioRegistro() {
         throw new Error(`Error: ${response.status}`);
       }
 
-      window.location.href = '../../app.js'
+      window.location.href = '/'
     } catch (error) {
       throw new Error('Error creating user')
     }

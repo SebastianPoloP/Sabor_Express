@@ -1,15 +1,9 @@
 import mysql from 'mysql2/promise';
-import bcrypt from 'bcrypt'
+import bcrypt from 'bcrypt';
 import { SALT_ROUND } from '../utils/config.js';
-
 // datos necesarios para acceder a la base de datos
-const config = {
-  host: 'localhost',
-  user: 'root',
-  port: 3307,
-  password: '',
-  database: 'sabor_express'
-}
+import { config } from '../utils/mysql.js';
+
 // Forma de conectar con la base de datos.
 const connection = await mysql.createConnection(config);
 
