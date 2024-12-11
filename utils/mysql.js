@@ -3,6 +3,6 @@ export const config = {
   host: 'localhost',
   user: 'root',
   port: 3307,
-  password: ';Juvapolo16.',
+  password: '',
   database: 'sabor_express'
 }

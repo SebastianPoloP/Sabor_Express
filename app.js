@@ -5,8 +5,6 @@ import { createUserRouter } from './routes/user.js';
 import { PORT } from './utils/config.js'
 import { createLoginRouter } from './routes/login.js';
 import { createProductoRouter } from './routes/producto.js';
-import cookieParser from 'cookie-parser';
-
 // Constante para usar Express
 const app = express();
 
@@ -15,9 +13,7 @@ export const App = ({ userModel, loginModel, productoModel }) => {
   // Deshabilitar el powered by de express
   app.disable('x-powered-by');
   // Uso del middleware para solucionar el CORS
-  app.use(corsMiddleware({acceptedOrigins: ['http://localhost:3000', 'http://localhost:3030', undefined]}));
-  // Middleware para el uso de Cookies
-  app.use(cookieParser());
+  app.use(corsMiddleware());
   // Usar el formato Json para recibir información
   app.use(json());
   // Enlazar las routas con la app principal

@@ -28,31 +28,11 @@ export class LoginModel {
       // Comparar la contraseña que puso el usuario con la contraseña hasheada en la base de datos
       const isValid = await bcrypt.compare(password, contrasena);
       // Error en caso de que la contraseña no sea igual
-      if (!isValid) throw new Error('Contraseña errónea');
+      if(!isValid) throw new Error('Contraseña errónea');
       // Petición a la base de datos para recuperar el nombre y el apellido del usuario
       const [user] = await connection.query(
-        `SELECT nombreUsuario, apellidoUsuario FROM usuario 
-        WHERE correo = ?;`,
-        [correo]
+        `SELECT nombreUsuario, apellidoUsuario FROM usuario;`
       );
-      // Petición a la base de datos para tomar el id
-      const [id] = await connection.query(
-        `SELECT BIN_TO_UUID(usuario_id) usuario_id FROM usuario WHERE correo = ?;`,
-        [correo]
-      );
-      // Sintaxis de desestructuración para tomar el usuario_id
-      const [{ usuario_id }] = id;
-      // Petición a la base de datos para verificar si el usuario es ADMIN
-      const [userAdmin] = await connection.query(
-        `SELECT nombreUsuario, apellidoUsuario, puesto FROM usuarioAdmin 
-        JOIN usuario ON usuario.usuario_id = UUID_TO_BIN(?)
-        WHERE usuarioAdmin.usuario_id = UUID_TO_BIN(?);`,
-        [usuario_id, usuario_id]
-      );
-      // Si se encuentra que el usuario es Admin, retornamos el usuario ADMIN
-      if (userAdmin.length > 0) {
-        return userAdmin;
-      }
       return user;
     } catch (error) {
       throw new Error(error);

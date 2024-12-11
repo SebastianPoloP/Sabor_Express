@@ -19,27 +19,6 @@ export class LoginController {
     }
     // Enviar datos al modelo Login
     const [user] = await this.loginModel.userLogin({ input: result.data });
-    // Verificar si los datos enviados del servidor pertenece a un ADMIN
-    if (user.puesto === 'Administrador') {
-      const token = jwt.sign(
-        {
-          user: user.nombreUsuario,
-          lastname: user.apellidoUsuario,
-          puesto: user.puesto
-        },
-        SECRET_KEY,
-        {
-          expiresIn: '1h'
-        });
-      return res
-        .cookie('access_admin_token', token, {
-          httpOnly: true,
-          secure: false,
-          sameSite: 'lax',
-          path: '/',
-        })
-        .status(200).send({ user, token })
-    }
     // Uso de Jsonwebtoken para crear un token al usuario que expira en 1 hora
     const token = jwt.sign(
       {
@@ -51,14 +30,7 @@ export class LoginController {
         expiresIn: '1h'
       }
     );
-
-    return res
-      .cookie('access_token', token, {
-        httpOnly: true,
-        secure: process.env.NODE_ENV === 'production',
-        sameSite: 'strict',
-        path: '/'
-      })
-      .status(200).send({ user, token });
+  
+    return res.status(200).json({user, token});
   }
 }
