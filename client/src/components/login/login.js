@@ -20,20 +20,18 @@ export function Login() {
   }
   async function sendForm(event) {
     event.preventDefault();
-
     try {
       const response = await fetch('http://localhost:3030/login', {
         method: 'POST',
         headers: {
           'Content-type': 'application/json'
         },
-        body: JSON.stringify(infoUser)
+        body: JSON.stringify(infoUser),
+        credentials: 'include'
       });
-
       if (!response.ok) {
         throw new Error(`Error: ${response.status}`);
       }
-
       window.location.href = '/'
     } catch (error) {
       throw new Error('Error validating user')
@@ -46,7 +44,7 @@ export function Login() {
       <NavBar />
       <div className="login">
         <h2 className="tituloLogin">Login</h2>
-        <form className="loginForm" onsubmit={sendForm}>
+        <form className="loginForm" onSubmit={sendForm}>
           <div className="form-group">
             <label for="email">Correo:</label>
             <input

@@ -27,17 +27,24 @@ export class ProductoModel {
     } = input;
     // Try...Catch para crear un producto, si hay error el Catch lo atrapa y lo muestra
     try {
-      const newProducto = await connection.query(
+      await connection.query(
         `INSERT INTO producto (nombreProducto, descripcionProducto, imagen, precio) 
         VALUES (?, ?, ?, ?);`,
         [nombreProducto, descripcionProducto, imagen, precio]
       );
-      // Retorna el producto para mostrarlo
-      return newProducto;
     } catch (error) {
       throw new Error(error)
     }
-    
+    // Traer el producto creado
+    const [producto] = await connection.query(
+      `SELECT nombreProducto, descripcionProducto, imagen, precio FROM producto
+      WHERE nombreProducto = ? 
+      AND descripcionProducto = ? 
+      AND imagen = ? 
+      AND precio = ?;`,
+      [nombreProducto, descripcionProducto, imagen, precio]
+    )
+    return producto;
   }
   // Método para actualizar un producto
   static async updateProducto({ id, input }) {

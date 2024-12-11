@@ -5,7 +5,7 @@ import { ProductoController } from "../controller/producto.js";
 export const createProductoRouter = ({ productoModel }) => {
   const productoRouter = Router();
   const productoController = new ProductoController({ productoModel });
-
+  // Routing
   productoRouter.get('/', productoController.getProducto);
   productoRouter.post('/create-producto', productoController.createProducto);
   productoRouter.patch('/:id', productoController.updateProducto);
