@@ -31,9 +31,7 @@ export class ProductoController {
       // Envio del producto enviado
       return res.status(201).json(newProducto);
     } catch (error) {
-      return res.status(401).json({ Message: 'Error creating product',
-        Error: error
-       });
+      return res.status(401).json({ Message: 'Error creating product' });
     }
   }
   // Función para actualizar un producto
@@ -49,6 +47,7 @@ export class ProductoController {
       if (!producto.success) return res.status(404).json({ message: JSON.stringify(producto.error.message) });
       // Tomamos la id para poder encontrar el producto en la BD
       const { id } = req.params;
+      console.log(id)
       // Enviamos la información al modelo
       const updProducto = await this.productoModel.updateProducto({ id, input: producto.data })
       // Retorna el usuario con las actualizaciones
@@ -70,7 +69,7 @@ export class ProductoController {
       if (!dlProducto) return res.status(404).json({ message: 'Producto no encontrado.' });
       return res.json({ message: 'Producto deleted' })
     } catch (error) {
-      return res.status(404).json({ Message: 'No se encontro el producto' })
+      return res.status(404).json({ Message: 'Product not found' })
     }
   }
 }

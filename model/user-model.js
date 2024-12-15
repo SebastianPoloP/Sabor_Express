@@ -80,10 +80,11 @@ export class UserModel {
     const [user] = await connection.query(
       `SELECT nombreUsuario, apellidoUsuario, correo, telefono, direccion 
       FROM usuario
-      WHERE usuario_id = UUID_TO_BIN(?);`, [id]
+      WHERE usuario_id = UUID_TO_BIN(?);`, 
+      [id]
     );
 
-    return user[0];
+    return user;
   }
   // Método asíncrono para eliminar un usuario por medio de la ID
   static async deleteUser({ id }) {
@@ -93,7 +94,7 @@ export class UserModel {
         `DELETE FROM usuario WHERE usuario_id = UUID_TO_BIN(?);`, [id]
       )
     } catch (error) {
-      throw new Error('Error eliminado el usuario')
+      throw new Error('Error, user not found')
     }
     return true;
   }

@@ -72,21 +72,29 @@ export class ProductoModel {
       WHERE producto_id = ?`, [id]
     );
 
-    return producto[0];
+    return producto;
   }
 
   // Método para eliminar un producto.
   static async deleteProducto({ id }) {
     // Consulta para eliminar el producto, en caso de error el catch lo atrapa
     try {
+      const [producto] = await connection.query(
+        `SELECT producto_id FROM producto
+        WHERE producto_id = ?`, [id]
+      );
+      
+      if(producto.length === 0) throw new Error('Producto not found');
+
       await connection.query(
         `DELETE FROM producto WHERE producto_id = ?;`,
         [id]
       );
+
+      // Retorna positivo en caso de eliminación del producto
+      return true;
     } catch (error) {
       throw new Error(error)
     }
-    // Retorna positivo en caso de eliminación del producto
-    return true;
   }
 }
