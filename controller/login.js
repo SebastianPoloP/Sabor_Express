@@ -19,6 +19,10 @@ export class LoginController {
     }
     // Enviar datos al modelo Login
     const [user] = await this.loginModel.userLogin({ input: result.data });
+    // Mostrar el error, en caso de haber un fallo
+    if(typeof user === 'string'){
+      return res.status(400).json({Message: user})
+    }
     // Verificar si los datos enviados del servidor pertenece a un ADMIN
     if (user.puesto === 'Administrador') {
       const token = jwt.sign(

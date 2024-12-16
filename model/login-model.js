@@ -55,7 +55,7 @@ export class LoginModel {
       }
       return user;
     } catch (error) {
-      throw new Error(error);
+      return [error.message];
     }
   }
 }

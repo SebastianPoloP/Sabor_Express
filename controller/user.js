@@ -33,7 +33,7 @@ export class UserControler {
   deleteUser = async (req, res) => {
     const { id } = req.params;
     const deleteUser = await this.userModel.deleteUser({ id });
-    if(!deleteUser) return res.status(404).json({Message: 'Error, user deleted'})
+    if(!deleteUser) return res.status(404).json({Message: 'Error, user not deleted'})
     return res.json({ Message: 'Usuario Eliminado' });
   }
 }

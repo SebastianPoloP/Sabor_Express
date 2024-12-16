@@ -47,7 +47,6 @@ export class ProductoController {
       if (!producto.success) return res.status(404).json({ message: JSON.stringify(producto.error.message) });
       // Tomamos la id para poder encontrar el producto en la BD
       const { id } = req.params;
-      console.log(id)
       // Enviamos la información al modelo
       const updProducto = await this.productoModel.updateProducto({ id, input: producto.data })
       // Retorna el usuario con las actualizaciones
